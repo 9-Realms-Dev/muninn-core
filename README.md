@@ -1,1 +1,1 @@
-# muninn-core
+# Muninn Core
