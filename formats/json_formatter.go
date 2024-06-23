@@ -70,7 +70,7 @@ func FormatJSONResponse(resp *http.Response) (JsonResponse, error) {
 	return formattedResp, nil
 }
 
-func (r JsonResponse) CliRender() string {
+func (r JsonResponse) CliRender(isRenderedBody bool) string {
 	var builder strings.Builder
 
 	// Define styles
@@ -96,7 +96,7 @@ func (r JsonResponse) CliRender() string {
 	builder.WriteString("\n")
 
 	// Render body
-	if r.Body != nil {
+	if isRenderedBody && r.Body != nil {
 		builder.WriteString(titleStyle.Render("Body:\n"))
 
 		switch body := r.Body.(type) {
